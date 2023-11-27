@@ -1,0 +1,128 @@
+// file for header styling
+
+.header {
+
+    
+
+    // Hamburger Open Style
+    &.open {
+
+        .header__menu {        
+            > span:first-child {
+                transform: rotate(45deg);       // animation for top line
+                transform-origin: 3px 1px;
+            }
+
+            > span:nth-child(2) {
+                opacity: 0; // have to use opacity because it can use transition display none can not
+            }
+
+            > span:last-child {
+                transform: rotate(-45deg);
+                transform-origin: 3px 1px;  // animation for bottom line
+            }
+        }
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 3.75rem;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-image: linear-gradient($darkBlue, transparent);
+    }
+
+    nav {
+        padding: 1.065rem 1.5rem;                                  // spaces out everything in the navigation bar
+    }
+
+    &__logo {                                           // logo appearance easybank
+
+        img{
+            width: 8.8125rem;
+            height: 1.375rem;
+        }
+    }
+
+    &__menu {                                           // mobile menu
+
+        >span{
+            display: block;
+            width: 26px;
+            height: 2px;                                // creates the menu hamburger
+            background-color: $darkBlue;
+            transition: all 300ms ease-in-out;
+
+            &:not(:last-child) {
+                margin-bottom: 5px;                     // spaces them out for appeal
+            }
+        }
+
+        &.open {
+
+            > span:first-child {
+                transform: rotate(45deg);       // animation for top line
+                transform-origin: 3px 1px;
+            }
+
+            > span:nth-child(2) {
+                opacity: 0; // have to use opacity because it can use transition display none can not
+            }
+
+            > span:last-child {
+                transform: rotate(-45deg);
+                transform-origin: 3px 1px;  // animation for bottom line
+            }
+        }
+    }
+
+    &__links {                                          // for desktop/tablet menu
+        a {
+            position: relative;
+            font-size: $font-sm;
+            color: $grayishBlue;
+            transition: color 300ms ease-in-out;        // pseudo for a only on desktop
+            
+            &:not(:last-child) {
+                margin-right: 32px;
+            }
+            
+            &::before { 
+                content: "";
+                display: block;
+                height: 5px;
+                position: absolute;                     
+                left: 0;
+                right: 0;
+                bottom: -30px;                          // this was for the hover function of the navbar 
+                background: linear-gradient(to right, $limeGreen, $brightCyan);
+                opacity: 0;                             // so it wont show until you hover
+                transition: opacity 300ms ease-in-out;  // animation transitioning colors
+            }
+
+            &:hover {
+                color: $darkBlue;                       
+
+                &::before {                                 
+                    opacity: 1;                         // appears after hovering over links
+                }
+            }
+        }
+
+        
+
+        
+    }
+
+    &__cta {                                            // for the call to action button request invite
+        font-size: $font-sm;
+        color: $white;
+        transition: opacity 300ms ease-in-out;
+
+        &:hover {
+            opacity: 0.75;
+        }
+    }                                             
+}
