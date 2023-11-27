@@ -21,13 +21,13 @@
 <body>
 
   <header class="header">
-    <div class="overlay"></div>
-    <nav class="flex flex-jc-sb flex-ai-c">  
+    <div class="overlay has-fade"></div>
+    <nav class="container flex flex-jc-sb flex-ai-c ">  
       <a href="/" class="header__logo">
         <img src="images\logo.svg" alt="Easybank" />
       </a>
 
-      <a id="btnHamburger" href="#" class="header__menu hide-for-desktop">      <!-- for mobile start -->
+      <a id="btnHamburger" href="#" class="header__toggle hide-for-desktop">      <!-- for mobile start -->
         <span></span> <!-- span by nature are display inline meaning they wont take up space if there is no content in them -->
         <span></span>
         <span></span>
@@ -42,7 +42,15 @@
       </div>                                                  <!-- for desktop/tabelt end -->
 
       <button type="button" class="header__cta hide-for-mobile">Request Invite</button>
-    </nav>                                    
+    </nav>
+    
+    <div class="header__menu has-fade">
+      <a href="">Home</a>
+      <a href="">About</a>
+      <a href="">Contact</a>
+      <a href="">Blog</a>
+      <a href="">Careers</a>
+    </div>
   </header>
 
   ------ DOING MOBILE APPLICATION FIRST ------
