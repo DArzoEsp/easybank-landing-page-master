@@ -1,4 +1,19 @@
 .feature {
+    background-color: $lightGrayishBlue;
+    text-align: center;
+
+    @include breakpoint-up(medium) {
+        text-align: left;
+    }
+
+    &__intro {
+        margin-bottom: 3.75rem;
+        font-size: $font-med;
+
+        @include breakpoint-up(large) {
+            width: 60%;
+        }
+    }
 
     &__grid {                               // this style is called block element modifier
 
@@ -11,9 +26,11 @@
 
     &__item {
         padding: 0.9375rem;
+        justify-content: center;
+        align-items: center;
         
         @include breakpoint-up(medium) {
-            flex: 1 0 30%;                  // flex is a shorthand property meaning it can take in three var 1: flex grow 2: flex shrink 3: flex basis (how much space it takes)
+            flex: 1 0 35%;                  // flex is a shorthand property meaning it can take in three var 1: flex grow 2: flex shrink 3: flex basis (how much space it takes)
         }
         
         @include breakpoint-up(large) {
@@ -23,14 +40,27 @@
 
     &__icon {
 
+        @include breakpoint-up(large) {
+            margin-bottom: 2.8125rem;
+        }
     }
 
     &__title {
+        font-size: $font-lg;
+        color: $darkBlue;
+        line-height: 1.15;
+        padding-top: 1rem;
+        margin-bottom: 1rem;
+        text-align: center;
 
-
+        @include breakpoint-up(medium) {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        } 
     }
 
     &__description {
-
+        line-height: 1.5;
+        font-size: 0.875rem;
     }
 }

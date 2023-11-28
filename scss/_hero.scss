@@ -80,39 +80,6 @@
             flex: 2;
             order: 1;
             text-align: left;
-
-            
-
-            p {
-                font-size: $font-lg;
-            }
-        }
-
-        h1 {
-            font-size: 2.3125rem;
-            font-weight: 300;
-            line-height: 1.15;
-            color: $darkBlue;          
-            margin-bottom: 1.5rem;                  // margin for spacing under the h1 tag for hero
-        
-            @include breakpoint-up(large) {
-
-                h1 {
-                    font-size: $font-xlg;
-                }
-            }
-        }
-
-        p {
-            line-height: 1.5;
-            margin-bottom: 2.25rem;
-
-            @include breakpoint-up(large) {
-
-                p {
-                    font-size: $font-lg;
-                }
-            }
         }
     }
 }
