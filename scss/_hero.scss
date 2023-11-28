@@ -1,32 +1,99 @@
 .hero {
+    background-color: $veryLightGray;
+    .container {
 
-   
+        @include breakpoint-up(large) {    
+            display: flex;
+            align-items: center;
+        }
+    }
 
     &__image {
-        position: relative;
-        background-image: url('/images/bg-intro-mobile.svg');
-        background-size: cover;
+        position: relative;                                     // when using position absolute make sure to make the parent 
+        background-image: url('/images/bg-intro-mobile.svg');   // if there is one relative so it wont cover more than the image
+        background-size: cover;                                 // its on top of
         background-repeat: no-repeat;
         background-position: center center;
         min-height: 17.5rem;
 
+        @include breakpoint-up(large) {      
+            flex: 3;
+            order: 2;
+            height: 41rem;
+            background-image: none;
+            // background-image: url('/images/bg-intro-desktop.svg');
+            // background-position: left center;
+
+        }
+        
         &::before {
             content: "";
-            position: absolute;
+            position: absolute;     // show above other image        
+            width: 100%;
+            height: 100%;
+            background-image: url('/images/bg-intro-desktop.svg');
+            background-size: 98%;                                   // instead of cover which can fit nicely on entire screen use % for accuracy
+            background-repeat: no-repeat;   
+            background-position: center bottom;
+            left: 25%;
+
+            @include breakpoint-up(large) {
+                width: 150%;
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;     // show above other image        
             height: 100%;
             width: 100%;
             background-image: url('/images/image-mockups.png');
-            background-size: 93%;
-            background-repeat: no-repeat;
-            background-position: center bottom;
-            min-height: 17.5rem;
+            background-size: 93%;                                   // instead of cover which can fit nicely on entire screen use % for accuracy
+            background-repeat: no-repeat;   
+            background-position: center bottom;                      // center: horizontally, bottom: vertically
         }
     }
 
     &__text {
+        text-align: center;
+
+        @include breakpoint-up(large) {      
+            flex: 2;
+            order: 1;
+            text-align: left;
+
+            
+
+            p {
+                font-size: $font-lg;
+            }
+        }
+
         h1 {
-            font-size: 30px;
+            font-size: 2.3125rem;
             font-weight: 300;
+            line-height: 1.15;
+            color: $darkBlue;          
+            margin-bottom: 1.5rem;                  // margin for spacing under the h1 tag for hero
+        
+            @include breakpoint-up(large) {
+
+                h1 {
+                    font-size: $font-xlg;
+                }
+            }
+        }
+
+        p {
+            line-height: 1.5;
+            margin-bottom: 2.25rem;
+
+            @include breakpoint-up(large) {
+
+                p {
+                    font-size: $font-lg;
+                }
+            }
         }
     }
 }
