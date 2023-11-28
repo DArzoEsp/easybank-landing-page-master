@@ -1,0 +1,36 @@
+.feature {
+
+    &__grid {                               // this style is called block element modifier
+
+        @include breakpoint-up(medium) {     // used helper classes .container and .container--pall for not copying paste easy helper methods
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+    }
+
+    &__item {
+        padding: 0.9375rem;
+        
+        @include breakpoint-up(medium) {
+            flex: 1 0 30%;                  // flex is a shorthand property meaning it can take in three var 1: flex grow 2: flex shrink 3: flex basis (how much space it takes)
+        }
+        
+        @include breakpoint-up(large) {
+            flex: 1;
+        }
+    }
+
+    &__icon {
+
+    }
+
+    &__title {
+
+
+    }
+
+    &__description {
+
+    }
+}
