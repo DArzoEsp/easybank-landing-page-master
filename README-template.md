@@ -49,63 +49,108 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
+- Helper Methods
+- CSS Grid and Flexbox
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- BEM style
+- [SASS]
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
+I learned how to use helper methods and how helpful using a mixins are for make a responsive layout
+I learned the how to use grid-template-areas and grid-area
+I learned about how to properly make a landing page from pixel to pixel perfection
+I learned about animations transitions and transformation
+I learned about javascript and how it interacts with css and html5
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+  <header class="header">                                               <!--  start of navbar -->
+    <div class="overlay has-fade"></div>
+    <nav class="container container--pall flex flex-jc-sb flex-ai-c "> 
 ```
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+  &.col2 {
+
+      @include breakpoint-up(large) {
+          grid-area: links2;
+      }
+
+      @include breakpoint-down(medium) {
+          &:not(:last-child) {
+              margin-bottom: 1.875rem;  
+          }
+      }
+
+      // Breakpoints
+
+// 600px, 1024px, 1400px
+$breakpoints-up: ("medium": "40em", "large": "64em", "x-large": "87.5em");
+
+// 639px, 1023px, 1399px
+$breakpoints-down: ("small": "39.9375em", "medium": "63.9375em", "large": "87.4375em");
+
+@mixin breakpoint-up($size) {
+    @media (min-width: map-get($breakpoints-up, $size)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-down($size) {    
+    @media (max-width: map-get($breakpoints-down, $size)) {
+        @content;
+    }
 }
 ```
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+const hamburger = document.querySelector('#btnHamburger');  // selecting hamburger id
+const body = document.querySelector('body');
+const header = document.querySelector('.header');   // selecting header class
+const overlay = document.querySelector('.overlay'); // selecting overlay class
+const fadeElems = document.querySelectorAll('.has-fade');   // selecting all has fade class
+
+menuClicked = () => {
+    if (header.classList.contains('open')) {
+        body.classList.remove('noscroll');
+        header.classList.remove('open');                            // removes previous opening
+        fadeElems.forEach((e) => e.classList.add('fade-out'));      // fades out with the overlay and menu option
+        fadeElems.forEach((e) => e.classList.remove('fade-in'));    // removes it for multiple times of clicks
+        overlay.classList.remove('fade-in');                        // removes fade in for multiple clicks
+        overlay.classList.add('fade-out');                          // appealing animation of fading out
+    } else {
+        body.classList.add('noscroll');
+        header.classList.add('open');   
+        fadeElems.forEach((e) => e.classList.add('fade-in'));       // fades in the overlay with the overlay and menu options
+        fadeElems.forEach((e) => e.classList.remove('fade-out'));  
+        overlay.classList.remove('fade-out');   
+        overlay.classList.add('fade-in');
+    }
+
+}; 
+
+// when menu is clicked do the function above
+hamburger.addEventListener('click', menuClicked);
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I wanted to see how to properly do an overlay when menu is clicked as well as making sure it is not buggy such as when you
+open the menu and while it is still open you increase screen size and it doesn't disappear.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [resource 1](https://css-tricks.com/) - This helped me with grid and flex box. I enjoyed this resource for helping correctly format and understand grid and flex more in depth
+- [resource 2](https://www.atlassian.com/agile) - This is an amazing method of working. It makes work flow much more efficient and less buggy at the end of the day
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
+- Website - [David Arzola-Espero](https://www.your-site.com)
 - Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
 - Twitter - [@yourusername](https://www.twitter.com/yourusername)
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+I referenced several videos such as codercoder and tsoding the most. Grateful for their content.
 
 **Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
